@@ -1,8 +1,15 @@
 import React from 'react'
+import Hero from '../components/Hero';
+import Category from '../components/Category';
+import BestSeller from '../components/BestSeller';
 
-function Home() {
+
+const Home = () => {
   return (
-    <div>Home</div>
+    <div className='mt-10'>
+    <Hero/>
+    <Category/>
+    <BestSeller/></div>
   )
 }
 
