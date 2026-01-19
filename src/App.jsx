@@ -10,6 +10,7 @@ import { AppContext } from "./context/appContext";
 import { useContext } from "react";
 import Auth from "./models/Auth";
 import ProductCategory from "./pages/ProductCategory";
+import Footer from "./components/Footer";
 
 const App = () => {
   const { isAdmin, showUserLogin } = useContext(AppContext);
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/my-Orders" element={<MyOrders />} />
         </Routes>
       </div>
+      {isAdminPath?null:<Footer/>}
     </div>
   );
 };
