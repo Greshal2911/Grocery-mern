@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../context/appContext";
 import { assets } from "../assets/assets";
 
 const Navbar = () => {
@@ -11,6 +11,7 @@ const Navbar = () => {
     showUserLogin,
     setShowUserLogin,
     navigate,
+    cartCount,
   } = useAppContext();
 
   return (
@@ -73,8 +74,8 @@ const Navbar = () => {
               strokeLinejoin="round"
             />
           </svg>
-          <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
-            0
+           <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
+            {cartCount()}
           </button>
         </div>
 
