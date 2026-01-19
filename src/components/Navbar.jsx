@@ -80,14 +80,18 @@ const Navbar = () => {
               strokeLinejoin="round"
             />
           </svg>
-           <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
+          <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
             {cartCount()}
           </button>
         </div>
 
         {user ? (
           <div className="relative group">
-            <img src={assets.profile_icon} alt="" className="w-10 rounded-full" />
+            <img
+              src={assets.profile_icon}
+              alt=""
+              className="w-10 rounded-full"
+            />
             <ul className="hidden group-hover:block absolute top-10 right-0 bg-white shadow-md border border-gray-200 py-2 w-32 rounded-md z-40 text-sm">
               <li
                 onClick={() => navigate("/my-orders")}
@@ -95,7 +99,10 @@ const Navbar = () => {
               >
                 My Orders
               </li>
-              <li className="p-2 cursor-pointer hover:bg-gray-100" onClick={() => setUser(null)}>
+              <li
+                className="p-2 cursor-pointer hover:bg-gray-100"
+                onClick={() => setUser(null)}
+              >
                 Logout
               </li>
             </ul>
@@ -112,7 +119,7 @@ const Navbar = () => {
           </button>
         )}
       </div>
-      <div className="flex items-center gap-6 md:hidden">
+      <div className="flex items-center gap-6 sm:hidden">
         <div
           className="relative cursor-pointer"
           onClick={() => navigate("/cart")}
@@ -132,7 +139,7 @@ const Navbar = () => {
             />
           </svg>
           <button className="absolute -top-2 -right-3 text-xs text-white bg-indigo-500 w-[18px] h-[18px] rounded-full">
-            0
+            {cartCount()}
           </button>
         </div>
         <button
@@ -166,7 +173,7 @@ const Navbar = () => {
       <div
         className={`${
           open ? "flex" : "hidden"
-        } absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}
+        } absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm sm:hidden`}
       >
         <Link onClick={() => setOpen(false)} to={"/"}>
           Home
@@ -177,7 +184,11 @@ const Navbar = () => {
 
         {user ? (
           <div className="relative group">
-            <img src={assets.profile_icon} alt="" className="w-10 rounded-full" />
+            <img
+              src={assets.profile_icon}
+              alt=""
+              className="w-10 rounded-full"
+            />
             <ul className="hidden group-hover:block absolute top-10 right-0 bg-white shadow-md border border-gray-200 py-2 w-32 rounded-md z-40 text-sm">
               <li
                 onClick={() => navigate("/my-orders")}
