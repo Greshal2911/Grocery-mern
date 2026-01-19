@@ -13,7 +13,8 @@ const SingleProduct = () => {
   useEffect(() => {
     if (products.length > 0 && product) {
       const productsCopy = products.filter(
-        (item) => item.category === product.category && item._id !== product._id
+        (item) =>
+          item.category === product.category && item._id !== product._id,
       );
       setRelatedProducts(productsCopy.slice(0, 5));
     }
@@ -27,7 +28,7 @@ const SingleProduct = () => {
       <div className="mt-16">
         <p>
           <Link to="/">Home</Link>/<Link to={"/products"}> Products</Link> /
-          <Link to={`/products/${product.category.toLowerCase()}`}>
+          <Link to={`/product/${product.category.toLowerCase()}`}>
             {" "}
             {product.category}
           </Link>{" "}
@@ -43,19 +44,13 @@ const SingleProduct = () => {
                   onClick={() => setThumbnail(image)}
                   className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer"
                 >
-                  <img
-                    src={image}
-                    alt={`Thumbnail ${index + 1}`}
-                  />
+                  <img src={image} alt={`Thumbnail ${index + 1}`} />
                 </div>
               ))}
             </div>
 
             <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
-              <img
-                src={thumbnail}
-                alt="Selected product"
-              />
+              <img src={thumbnail} alt="Selected product" />
             </div>
           </div>
 
