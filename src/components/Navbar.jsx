@@ -12,8 +12,8 @@ const Navbar = () => {
     setShowUserLogin,
     navigate,
     cartCount,
+    setSearchQuery,
   } = useAppContext();
-
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
       <Link to="/">
@@ -27,6 +27,12 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
           <input
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              if (e.target.value.length > 0) {
+                navigate("/products");
+              }
+            }}
             className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
             type="text"
             placeholder="Search products"

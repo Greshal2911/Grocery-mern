@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
-import ProductDetails from "./pages/ProductDetails";
+import SingleProduct from "./pages/SingleProduct";
 import MyOrders from "./pages/myOrders";
 import Navbar from "./components/Navbar";
 import { AppContext } from "./context/appContext";
@@ -25,7 +25,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/product/:category/:id" element={<ProductDetails />} />
+          <Route path="/product/:category/:id" element={<SingleProduct />} />
           <Route path="/product/:category" element={<ProductCategory />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/my-Orders" element={<MyOrders />} />
