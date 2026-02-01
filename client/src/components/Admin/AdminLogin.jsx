@@ -1,5 +1,5 @@
-import toast from "react-hot-toast";
-import { useAppContext } from "../../context/appContext";
+import {toast} from "react-hot-toast";
+import { useAppContext } from "../../context/AppContext";
 import React, { useState, useEffect } from "react";
 const AdminLogin = () => {
   const { isAdmin, setIsAdmin, navigate, axios } = useAppContext();
@@ -20,6 +20,7 @@ const AdminLogin = () => {
       if (data.success) {
         setIsAdmin(true);
         navigate("/Admin");
+        toast.success(data.message);
       } else {
         toast.error(data.message);
       }

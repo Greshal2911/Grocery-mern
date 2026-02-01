@@ -6,7 +6,7 @@ import Cart from "./pages/Cart";
 import SingleProduct from "./pages/SingleProduct";
 import MyOrders from "./pages/myOrders";
 import Navbar from "./components/Navbar";
-import { AppContext } from "./context/appContext";
+import { AppContext } from "./context/AppContext";
 import { useContext } from "react";
 import Auth from "./models/Auth";
 import ProductCategory from "./pages/ProductCategory";
@@ -40,16 +40,12 @@ const App = () => {
             path="/admin"
             element={isAdmin ? <AdminLayout /> : <AdminLogin />}
           >
-            <Route
-              index
-              path="add-product"
-              element={isAdmin ? <AddProduct /> : null}
-            />
+            <Route index element={isAdmin ? <AddProduct /> : null} />
             <Route
               path="product-list"
               element={isAdmin ? <ProductList /> : null}
             />
-            {/* <Route path="orders" element={isAdmin ? <Orders /> : null} /> */}
+            <Route path="orders" element={isAdmin ? <Orders /> : null} />
           </Route>
         </Routes>
       </div>

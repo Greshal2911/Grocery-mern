@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 
 import { useContext, useEffect, useState } from "react";
 import { dummyOrders } from "../assets/assets";
-import { AppContext } from "../context/appContext";
+import { AppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
-  const { axios, user } = useContext(AppContext);
+  const { axios, user, backendUrl } = useContext(AppContext);
   const fetchOrders = async () => {
     try {
       const { data } = await axios.get("/api/order/user");
@@ -48,12 +48,11 @@ const MyOrders = () => {
               className={`relative bg-white text-gray-800/70 ${
                 order.items.length !== index + 1 && "border-b"
               } border-gray-300 flex flex-col md:flex-row md:items-center  justify-between p-4 py-5 w-full max-w-4xl`}
-
             >
               <div className="flex items-center mb-4 md:mb-0">
                 <div className="p-4 rounded-lg">
                   <img
-                    src={`http://localhost:5000/images/${item.product.image[0]}`}
+                    src={`${backendUrl}/images/${item.product.image[0].replace(/"/g, "")}`}
                     alt=""
                     className="w-16 h-16"
                   />

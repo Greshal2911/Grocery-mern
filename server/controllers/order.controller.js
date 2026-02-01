@@ -64,3 +64,15 @@ export const getAllOrders = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+// update order status
+export const updateStatus = async (req, res) => {
+  try {
+    const { orderId, status } = req.body;
+    await Order.findByIdAndUpdate(orderId, { status });
+    res.json({ success: true, message: "Status Updated" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};

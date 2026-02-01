@@ -8,3 +8,10 @@ node_modules/
 # build
 dist
 build
+# client env files
+client/.env
+client/.env.local
+
+# server env files
+server/.env
+server/.env.local

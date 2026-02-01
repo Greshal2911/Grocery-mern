@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAppContext } from "../context/appContext";
+import { useAppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 
 const Navbar = () => {

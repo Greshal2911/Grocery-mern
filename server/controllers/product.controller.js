@@ -72,11 +72,29 @@ export const changeStock = async (req, res) => {
     const product = await Product.findByIdAndUpdate(
       id,
       { inStock },
-      { new: true }
+      { new: true },
     );
     res
       .status(200)
       .json({ success: true, product, message: "Stock updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+// delete product :/api/product/delete
+export const removeProduct = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const product = await Product.findByIdAndDelete(id);
+    if (!product) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "Product deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }

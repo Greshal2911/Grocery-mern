@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { assets } from "../assets/assets";
-import { useAppContext } from "../context/appContext";
+import { useAppContext } from "../context/AppContext";
 import { dummyAddress } from "../assets/assets";
 import toast from "react-hot-toast";
 const Cart = () => {
@@ -15,6 +15,7 @@ const Cart = () => {
     updateCartItem,
     axios,
     user,
+    backendUrl,
   } = useAppContext();
 
   const [cartArray, setCartArray] = useState([]);
@@ -118,7 +119,7 @@ const Cart = () => {
               >
                 <img
                   className="max-w-full h-full object-cover"
-                  src={product.image[0]}
+                  src={`${backendUrl}/images/${product.image[0].replace(/"/g, "")}`}
                   alt={product.name}
                 />
               </div>

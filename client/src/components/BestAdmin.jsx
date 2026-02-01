@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from "../context/appContext";
+import { AppContext } from "../context/AppContext";
 import ProductCard from "./ProductCard";
 import { assets } from "../assets/assets";
 
-const BestSeller = () => {
+const BestAdmin = () => {
   const { products } = useContext(AppContext);
   return (
     <div className="mt-16">
@@ -20,4 +20,4 @@ const BestSeller = () => {
   );
 };
 
-export default BestSeller;
+export default BestAdmin;

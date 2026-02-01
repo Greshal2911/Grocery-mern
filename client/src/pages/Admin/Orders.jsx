@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AppContext, useAppContext } from "../../context/appContext";
+import { AppContext, useAppContext } from "../../context/AppContext";
 import { assets, dummyOrders } from "../../assets/assets";
 import toast from "react-hot-toast";
 
@@ -21,6 +21,20 @@ const Orders = () => {
       toast.error(error.message);
     }
   };
+  const statusHandler = async (event, orderId) => {
+    try {
+      const response = await axios.post("/api/order/status", {
+        orderId,
+        status: event.target.value,
+      });
+      if (response.data.success) {
+        await fetchOrders();
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -36,7 +50,7 @@ const Orders = () => {
           <div className="flex gap-5">
             <img
               className="w-12 h-12 object-cover opacity-60"
-              src={`http://localhost:5000/images/${order.items[0].product.image[0]}`}
+              src={`${import.meta.env.VITE_BACKEND_URL}/images/${order.items[0].product.image[0] ? order.items[0].product.image[0].replace(/"/g, "") : ""}`}
               alt="boxIcon"
             />
             <>
@@ -77,6 +91,17 @@ const Orders = () => {
             <p>Date: {order.orderDate}</p>
             <p>Payment: {order.isPaid ? "Paid" : "Pending"}</p>
           </div>
+          <select
+            onChange={(event) => statusHandler(event, order._id)}
+            value={order.status}
+            className="p-2 font-semibold bg-gray-50 border border-gray-300 w-[150px]"
+          >
+            <option value="Order Placed">Order Placed</option>
+            <option value="Packing">Packing</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Out for delivery">Out for delivery</option>
+            <option value="Delivered">Delivered</option>
+          </select>
         </div>
       ))}
     </div>

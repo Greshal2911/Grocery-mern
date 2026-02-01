@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../context/appContext";
+import { useAppContext } from "../context/AppContext";
 import { Link, useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
 import ProductCard from "../components/ProductCard";
 const SingleProduct = () => {
-  const { products, navigate, addToCart } = useAppContext();
+  const { products, navigate, addToCart, backendUrl } = useAppContext();
   const { id } = useParams();
   const [thumbnail, setThumbnail] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -44,13 +44,19 @@ const SingleProduct = () => {
                   onClick={() => setThumbnail(image)}
                   className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer"
                 >
-                  <img src={image} alt={`Thumbnail ${index + 1}`} />
+                  <img
+                    src={`${backendUrl}/images/${image ? image.replace(/"/g, "") : ""}`}
+                    alt={`Thumbnail ${index + 1}`}
+                  />
                 </div>
               ))}
             </div>
 
             <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
-              <img src={thumbnail} alt="Selected product" />
+              <img
+                src={`${backendUrl}/images/${thumbnail ? thumbnail.replace(/"/g, "") : ""}`}
+                alt="Selected product"
+              />
             </div>
           </div>
 

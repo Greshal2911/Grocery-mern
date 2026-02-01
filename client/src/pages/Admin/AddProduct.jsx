@@ -1,7 +1,7 @@
 import React from 'react'
 import { assets, categories } from "../../assets/assets";
 import { useContext, useState } from "react";
-import { AppContext } from "../../context/appContext";
+import { AppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
 const AddProduct = () => {
   const { axios } = useContext(AppContext);

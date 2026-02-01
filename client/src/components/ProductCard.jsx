@@ -1,10 +1,10 @@
 import React from "react";
 import { useContext, useState } from "react";
-import { AppContext } from "../context/appContext";
+import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 
 const ProductCard = ({ product }) => {
-  const { navigate, cartItems, addToCart, removeFromCart } =
+  const { navigate, cartItems, addToCart, removeFromCart, backendUrl } =
     useContext(AppContext);
   const [count, setCount] = useState(0);
   return (
@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
         <div className="group cursor-pointer flex items-center justify-center px-2">
           <img
             className="group-hover:scale-105 transition max-w-26 md:max-w-36"
-            src={product.image[0]}
+            src={`${backendUrl}/images/${product.image?.[0] ? product.image[0].replace(/"/g, "") : ""}`}
             alt={product.name}
           />
         </div>

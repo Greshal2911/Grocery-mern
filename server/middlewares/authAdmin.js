@@ -12,7 +12,7 @@ export const authAdmin = async (req, res, next) => {
       return res.status(403).json({ message: "Forbidden", success: false });
     }
   } catch (error) {
-    console.error("Error in authSeller middleware:", error);
+    console.error("Error in authAdmin middleware:", error);
     return res.status(401).json({ message: "Invalid token", success: false });
   }
 };
