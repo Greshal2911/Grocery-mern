@@ -15,7 +15,7 @@ import { connectCloudinary } from "./config/cloudinary.js";
 
 connectDB();
 connectCloudinary();
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL];
 
 //middlewares
 app.use(express.json());
@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use("/images", express.static("uploads"));
 
 //api end points
-app.use("/images" , express.static("uploads"));
+app.use("/images", express.static("uploads"));
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/product", productRoutes);
